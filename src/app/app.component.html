@@ -1,0 +1,26 @@
+<table datatable class="row-border hover" [dtOptions]="dtOptions">
+    <thead>
+        <div class="dt-length">
+
+            <button (click)="addElement()"> <i class="fa-solid fa-plus icono"></i></button>
+        </div>
+      <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>crud</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Foo</td>
+        <td>Bar</td>
+        <td>
+            <button (click)="editElement()">   <i class="fa-regular fa-pen-to-square icono"></i> </button>
+            <button (click)="deleteElement()"> <i class="fa-solid fa-trash icono"></i></button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
