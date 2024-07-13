@@ -42,4 +42,38 @@ export class ProductEffects {
             )
         )
     )
+
+
+    deletProductsEffect$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(fromProductsActions.eliminarProducto),
+            mergeMap((accion) =>
+    
+                this.ProductService.deleteProducts(accion.id).pipe(
+                    map(resp => {
+                        return fromProductsActions.obtenerProductos()
+                    }),
+                    catchError((error) => of(fromProductsActions.failEliminarProducto({ error: error })))
+    
+                )
+            )
+        )
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+

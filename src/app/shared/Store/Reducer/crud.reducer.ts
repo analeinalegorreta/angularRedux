@@ -58,6 +58,25 @@ export const productReducer = createReducer(
             error: action.error,
 
         }
+    }),
+
+
+
+
+    on(fromProductsActions.eliminarProducto, (state) => {
+        return {
+            ...state,
+            loading: true,
+
+        }
+    }),
+    on(fromProductsActions.failEliminarProducto, (state, action) => {
+        return {
+            ...state,
+            loading: false,
+            error: action.error,
+
+        }
     })
 
 );

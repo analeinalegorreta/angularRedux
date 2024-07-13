@@ -10,7 +10,12 @@ export class ProductService {
 
   url:string='https://fakestoreapi.com'
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    // this.deleteProducts(6).subscribe(resp =>{     
+    //   console.log(resp);
+      
+    // })
+  }
 
 public GetAllProducts():Observable<Product[]> {
   return this.http.get<Product[]>(`${this.url}/products`)
@@ -22,6 +27,12 @@ public GetAllProducts():Observable<Product[]> {
                 (`${this.url}/products/${producto.id}`,  //url
                   producto)                              // body                            
   }
+
+  public deleteProducts(id:number):Observable<Product> {
+    return this.http.delete<Product>
+                (`${this.url}/products/${id}`)                                                    
+  }
+
 
 }
 

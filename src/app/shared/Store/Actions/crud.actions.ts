@@ -1,6 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { Product } from '../../interfaces/produc.interfaces';
 
+// OBTENER
+
  const OBTENER_PRODUCTOS = "[prouctos] obtener productos"; // crear las descripciones de las constantes 
  const OBTENER_PRODUCTOS_SUCCESS = "[prouctos] obtener productos success";
  const OBTENER_PRODUCTOS_FAIL = "[prouctos] obtener productos fail";
@@ -10,10 +12,19 @@ export const successProductos=createAction(OBTENER_PRODUCTOS_SUCCESS,props<{data
 export const failProductos=createAction(OBTENER_PRODUCTOS_FAIL,props<{error:any}>())
 
 
-
-const EDITAR_PRODUCTOS = "[prouctos] editar productos"; // crear las descripciones de las constantes 
+//EDITAR
+const EDITAR_PRODUCTOS = "[prouctos] editar productos";
 const EDITAR_PRODUCTOS_FAIL = "[prouctos] editar productos fail";
 
-export const editarProductos=createAction(EDITAR_PRODUCTOS, props<{producto:Product}>())
+export const editarProductos=createAction(EDITAR_PRODUCTOS, props<{producto:Product}>()) // lleva producto ya que el id va en el body 
 export const failEditarProductos=createAction(EDITAR_PRODUCTOS_FAIL,props<{error:any}>())
 
+//AGREGAR
+
+//ELIMINAR
+
+const ELIMINAR_PRODUCTOS = "[prouctos] eliminar productos";
+const ELIMINAR_PRODUCTOS_FAIL = "[prouctos] eliminar productos fail";
+
+export const eliminarProducto=createAction(ELIMINAR_PRODUCTOS, props<{id:number}>())
+export const failEliminarProducto=createAction(ELIMINAR_PRODUCTOS_FAIL,props<{error:any}>())
