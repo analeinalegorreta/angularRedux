@@ -39,5 +39,26 @@ export const productReducer = createReducer(
             error: action.error,
 
         }
+    }),
+
+
+
+
+    on(fromProductsActions.editarProductos, (state) => {
+        return {
+            ...state,
+            loading: true,
+
+        }
+    }),
+    on(fromProductsActions.failEditarProductos, (state, action) => {
+        return {
+            ...state,
+            loading: false,
+            error: action.error,
+
+        }
     })
+
 );
+

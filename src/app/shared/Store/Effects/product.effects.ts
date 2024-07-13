@@ -26,4 +26,20 @@ export class ProductEffects {
             )
         )
     )
+
+    editProductsEffect$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(fromProductsActions.editarProductos),
+            mergeMap((accion) =>
+
+                this.ProductService.updateProducts(accion.producto).pipe(
+                    map(resp => {
+                        return fromProductsActions.obtenerProductos()
+                    }),
+                    catchError((error) => of(fromProductsActions.failEditarProductos({ error: error })))
+
+                )
+            )
+        )
+    )
 }

@@ -17,4 +17,13 @@ public GetAllProducts():Observable<Product[]> {
 }
 
 
+  public updateProducts(producto:Product):Observable<Product> {
+    return this.http.put<Product>
+                (`${this.url}/products/${producto.id}`,  //url
+                  producto)                              // body                            
+  }
+
 }
+
+
+
