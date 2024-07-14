@@ -15,6 +15,28 @@ export class ProductService {
     //   console.log(resp);
       
     // })
+
+
+    
+    let productoNuevo: Product = {
+      category: "carro",
+      id: 1,
+      description: "ruedas",
+      image: "/img",
+      price: 299,
+      rating: {
+        count: 1,
+        rate: 5
+      },
+      title: "Scarro nuevo"
+
+
+    }
+
+     this.addProducts(productoNuevo).subscribe(resp =>{     
+      console.log(resp);
+      
+    })
   }
 
 public GetAllProducts():Observable<Product[]> {
@@ -32,6 +54,17 @@ public GetAllProducts():Observable<Product[]> {
     return this.http.delete<Product>
                 (`${this.url}/products/${id}`)                                                    
   }
+
+  public addProducts(producto:Product):Observable<Product> {
+    return this.http.post<Product>
+                (`${this.url}/products`,  //url
+                  producto)                              // body                            
+  }
+
+
+
+
+
 
 
 }

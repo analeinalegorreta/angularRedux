@@ -77,7 +77,25 @@ export const productReducer = createReducer(
             error: action.error,
 
         }
-    })
+    }),
+
+    
+
+    on(fromProductsActions.agregarProductos, (state) => {
+        return {
+            ...state,
+            loading: true,
+
+        }
+    }),
+    on(fromProductsActions.failAgregarProductos, (state, action) => {
+        return {
+            ...state,
+            loading: false,
+            error: action.error,
+
+        }
+    }),
 
 );
 

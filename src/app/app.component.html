@@ -6,21 +6,34 @@
         </div>
       <tr>
         <th>ID</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>crud</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Modificar</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Foo</td>
-        <td>Bar</td>
+      <tr *ngFor="let produc of productos">
+        <td>{{produc.id}}</td>
+        <td>{{produc.title}}</td>
+        <td>{{produc.price}}</td>
         <td>
             <button (click)="editElement()">   <i class="fa-regular fa-pen-to-square icono"></i> </button>
-            <button (click)="deleteElement()"> <i class="fa-solid fa-trash icono"></i></button>
+            <button (click)="deleteElement(produc.id)"> <i class="fa-solid fa-trash icono"></i></button>
         </td>
       </tr>
 
+     
+
     </tbody>
   </table>
+
+
+
+
+
+
+
+
+
+
+  

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DataTablesModule } from 'angular-datatables';
 import { Config } from 'datatables.net';
-import { editarProductos, obtenerProductos } from './shared/Store/Actions/crud.actions';
+import { agregarProductos, editarProductos, eliminarProducto, obtenerProductos } from './shared/Store/Actions/crud.actions';
 import { ProductState } from './shared/Store/Reducer/crud.reducer';
 import { getProductsState } from './shared/Store/Selectors/product.selector';
 import { Product } from './shared/interfaces/produc.interfaces';
@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
 
   };
 
+  public productos:Product[]=[]
+
   constructor(public store: Store, private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -28,7 +30,9 @@ export class AppComponent implements OnInit {
     
     this.store.select(getProductsState).subscribe(  // escucha todos los cambios ya se edit delete y get el que sea 
       resp => {
+        this.productos=resp.data
         console.log(resp);
+        
       }
     )
     
@@ -37,7 +41,9 @@ export class AppComponent implements OnInit {
 
   }
 
-  addElement() { }
+  addElement() { 
+    //this.store.dispatch(agregarProductos(this.productos))
+  }
 
   editElement() {
 
@@ -61,9 +67,9 @@ export class AppComponent implements OnInit {
 
   }
 
-  deleteElement() {
+  deleteElement(id:number) {
 
-    //this.store.dispatch(this.deleteElement({id:6}))
+    this.store.dispatch(eliminarProducto({id:id}))
 
   }
 
