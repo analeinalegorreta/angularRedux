@@ -30,8 +30,8 @@ export class AppComponent implements OnInit {
   private modalService = inject(NgbModal);
 
 
-  constructor(public store: Store, private productService: ProductService, private activeModal: NgbActiveModal) {
-    // this.modalReference = this.modalService.activeInstances;
+  constructor(public store: Store, private productService: ProductService) {
+   
   }
 
 
@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
   }
 
   addElement() {
-    //this.store.dispatch(agregarProductos(this.productos))
+   
 
   }
 
@@ -100,20 +100,20 @@ export class AppComponent implements OnInit {
 
 
 
-  onsubmit(): void {
+  onsubmit(content: TemplateRef<any>): void {
 
 
     let producto: Product = {
 
-      title: this.producForm.get('nombreGasto')!.value,
-      price: parseInt(this.producForm.get('cantidad')!.value ?? '0'),
-      description: this.producForm.get('fechaDelGasto')!.value,
-      category: this.producForm.get('fechaDelGasto')!.value,
+      title: this.producForm.get('title')!.value,
+      price: parseInt(this.producForm.get('price')!.value ?? '0'),
+      description: this.producForm.get('description')!.value,
+      category: this.producForm.get('category')!.value,
       image: "",
     }
 
     // this.producForm.value;
-    this.activeModal.close();
+    this.modalService.dismissAll()
 
   }
 
