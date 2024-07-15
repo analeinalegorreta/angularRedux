@@ -20,8 +20,8 @@ export const editarProductos=createAction(EDITAR_PRODUCTOS, props<{producto:Prod
 export const failEditarProductos=createAction(EDITAR_PRODUCTOS_FAIL,props<{error:any}>())
 
 //AGREGAR
-const AGREGAR_PRODUCTOS = "[prouctos] editar productos";
-const AGREGAR_PRODUCTOS_FAIL = "[prouctos] editar productos fail";
+const AGREGAR_PRODUCTOS = "[prouctos] agregar productos";
+const AGREGAR_PRODUCTOS_FAIL = "[prouctos] agregar productos fail";
 
 export const agregarProductos=createAction(AGREGAR_PRODUCTOS, props<{producto:Product}>()) 
 export const failAgregarProductos=createAction(AGREGAR_PRODUCTOS_FAIL,props<{error:any}>())
