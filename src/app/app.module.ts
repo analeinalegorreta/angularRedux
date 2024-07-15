@@ -11,23 +11,37 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ProductEffects } from './shared/Store/Effects/product.effects';
 import { productReducers } from './shared/Store/Selectors/product.selector';
 import { provideHttpClient } from '@angular/common/http';
+import { NgbActiveModal, NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DataTablesModule,
-    SharedModule,
     EffectsModule.forRoot([ProductEffects]),
     StoreModule.forRoot(productReducers),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    DataTablesModule,
+    
   ],
   providers: [
-    provideHttpClient()
+    provideHttpClient(),
+     NgbModal,
+     NgbActiveModal
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  
+ }

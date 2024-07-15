@@ -2,9 +2,51 @@
     justify-content: center;
     align-items: center;
     margin: 5%;
+    background: none;
+    color: #4472C4;
   }
-  .iconoPlus {
-    justify-content: center;
-    align-items: center;
-    margin: 5%;
+  button{
+    .iconoPlus {
+      display: flex;
+      align-items: right;
+      justify-content: right;
+      margin: 5%;
+  
+    }
+  }
+
+  .modalClass{
+    color: #4472C4;
+
+  }
+
+
+  .dark-modal .modal-content {
+    background-color: #4472C4;
+    color: white;
+    
+  }
+  .dark-modal .close {
+    color: white;
+  }
+
+
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #D0D6EA; 
+  }
+  th { 
+    background: #4472C4; 
+    color: white; 
+    font-weight: bold; 
+    
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid white;
+    text-align: center; 
   }

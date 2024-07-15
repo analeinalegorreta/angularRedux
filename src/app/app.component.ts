@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DataTablesModule } from 'angular-datatables';
 import { Config } from 'datatables.net';
@@ -6,7 +6,12 @@ import { agregarProductos, editarProductos, eliminarProducto, obtenerProductos }
 import { ProductState } from './shared/Store/Reducer/crud.reducer';
 import { getProductsState } from './shared/Store/Selectors/product.selector';
 import { Product } from './shared/interfaces/produc.interfaces';
+
 import { ProductService } from './shared/services/product.service';
+
+import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -21,29 +26,53 @@ export class AppComponent implements OnInit {
 
   };
 
-  public productos:Product[]=[]
+  public productos: Product[] = []
+  private modalService = inject(NgbModal);
 
-  constructor(public store: Store, private productService: ProductService) { }
+
+  constructor(public store: Store, private productService: ProductService, private activeModal: NgbActiveModal) {
+    // this.modalReference = this.modalService.activeInstances;
+  }
+
+
+  public producForm = new FormGroup({
+
+    title: new FormControl<string>(''),
+    price: new FormControl<string>(''),
+    description: new FormControl<string>(''),
+    category: new FormControl<string>(''),
+    image: new FormControl(''),
+
+  })
+
 
   ngOnInit(): void {
 
-    
+
     this.store.select(getProductsState).subscribe(  // escucha todos los cambios ya se edit delete y get el que sea 
       resp => {
-        this.productos=resp.data
+        this.productState = resp;
+        this.productos = resp.data
         console.log(resp);
-        
+
       }
     )
-    
+
     this.store.dispatch(obtenerProductos()) //  se coloca en el ngOnInit por que carga la tabla de una
 
 
   }
 
-  addElement() { 
-    //this.store.dispatch(agregarProductos(this.productos))
+  openVerticallyCentered(content: TemplateRef<any>) {
+    this.modalService.open(content, { centered: true });
   }
+
+  addElement() {
+    //this.store.dispatch(agregarProductos(this.productos))
+
+  }
+
+
 
   editElement() {
 
@@ -53,10 +82,6 @@ export class AppComponent implements OnInit {
       description: "Silla",
       image: "/img",
       price: 2,
-      rating: {
-        count: 1,
-        rate: 5
-      },
       title: "Silla nueva blanca"
 
 
@@ -67,9 +92,28 @@ export class AppComponent implements OnInit {
 
   }
 
-  deleteElement(id:number) {
+  deleteElement(id: number) {
 
-    this.store.dispatch(eliminarProducto({id:id}))
+    this.store.dispatch(eliminarProducto({ id: id }))
+
+  }
+
+
+
+  onsubmit(): void {
+
+
+    let producto: Product = {
+
+      title: this.producForm.get('nombreGasto')!.value,
+      price: parseInt(this.producForm.get('cantidad')!.value ?? '0'),
+      description: this.producForm.get('fechaDelGasto')!.value,
+      category: this.producForm.get('fechaDelGasto')!.value,
+      image: "",
+    }
+
+    // this.producForm.value;
+    this.activeModal.close();
 
   }
 

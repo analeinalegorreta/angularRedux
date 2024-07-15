@@ -24,10 +24,6 @@ export class ProductService {
       description: "ruedas",
       image: "/img",
       price: 299,
-      rating: {
-        count: 1,
-        rate: 5
-      },
       title: "Scarro nuevo"
 
 
@@ -57,8 +53,7 @@ public GetAllProducts():Observable<Product[]> {
 
   public addProducts(producto:Product):Observable<Product> {
     return this.http.post<Product>
-                (`${this.url}/products`,  //url
-                  producto)                              // body                            
+                (`${this.url}/products`,  JSON.stringify(producto))                              // body                            
   }
 
 

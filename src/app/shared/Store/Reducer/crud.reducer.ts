@@ -81,9 +81,12 @@ export const productReducer = createReducer(
 
     
 
-    on(fromProductsActions.agregarProductos, (state) => {
+    on(fromProductsActions.agregarProductos, (state, action) => {
+        let statee = Object.create(state);
+        statee.data.push(action.producto)
         return {
             ...state,
+            data: statee,
             loading: true,
 
         }

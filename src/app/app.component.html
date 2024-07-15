@@ -1,14 +1,24 @@
-<table datatable class="row-border hover" [dtOptions]="dtOptions">
-    <thead>
-        <div class="dt-length">
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-end">
+      <button class="btn btn-light" (click)="openVerticallyCentered(content)"> <i class="fa-solid fa-plus icono"></i></button>
+    </div>
+  </div>
+</div>
 
-            <button (click)="addElement()"> <i class="fa-solid fa-plus icono"></i></button>
-        </div>
+
+
+@if (!productState.loading) {
+  <table datatable class="row-border hover" id="tablas" [dtOptions]="dtOptions" >
+    <thead>
+
       <tr>
         <th>ID</th>
         <th>Nombre</th>
         <th>Precio</th>
-        <th>Modificar</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Editar</th>
       </tr>
     </thead>
     <tbody>
@@ -16,24 +26,71 @@
         <td>{{produc.id}}</td>
         <td>{{produc.title}}</td>
         <td>{{produc.price}}</td>
+        <td>{{produc.description}}</td>
+        <td>{{produc.category}}</td>
         <td>
-            <button (click)="editElement()">   <i class="fa-regular fa-pen-to-square icono"></i> </button>
-            <button (click)="deleteElement(produc.id)"> <i class="fa-solid fa-trash icono"></i></button>
+          <button class="btn btn-light m-1" (click)="editElement()"> <i class="fa-regular fa-pen-to-square icono"></i>
+  
+          </button>
+          @if (produc.id) {
+            <button class="btn btn-light"  (click)="deleteElement(produc.id)"> <i class="fa-solid fa-trash icono"></i>
+  
+            </button>
+          }
+  
         </td>
       </tr>
-
-     
-
-    </tbody>
-  </table>
-
-
-
-
-
-
-
-
-
-
   
+  
+  
+    </tbody>
+
+
+  </table>
+  
+}@else {
+  <p>Cargando...</p>
+}
+
+
+
+<form  [formGroup]="producForm" >
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title modalClass">Agregar Producto</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body container text-center">
+    <div class="row">
+      <div class="">
+        <label class="form-label fw-bold">Nombre:</label>
+        <div class="mt-2">
+          <input class="form-control" formControlName="title" >
+        </div>
+      </div>
+      <div class="col">
+        <label class="form-label fw-bold">Precio:</label>
+        <div class="mt-2">
+          <input class="form-control" formControlName="price" >
+        </div>
+      </div>
+      <div class="col">
+        <label class="form-label fw-bold">Categoría:</label>
+        <div class="mt-2">
+          <input class="form-control" formControlName="category" >
+        </div>
+      </div>
+      <div class="">
+        <label class="form-label fw-bold">Descripción:</label>
+        <div class="mt-2">
+          <input class="form-control" formControlName="description" >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="onsubmit()">Guardar</button>
+  </div>
+</ng-template>
+
+</form>
