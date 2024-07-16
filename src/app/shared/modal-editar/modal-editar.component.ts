@@ -15,30 +15,32 @@ export class ModalEditarComponent implements OnInit{
 
   @Input() productoXEditar!: Product;
 
-  private modalService = inject(NgbModal);
+
   
   public producForm! : FormGroup
 
 
-  constructor(public store: Store, private productService: ProductService) {
+  constructor(public store: Store, private productService: ProductService, private modalService:NgbModal) {
 
    
   }
 
   ngOnInit(): void {
+
+    
     this.producForm = new FormGroup({
 
       title: new FormControl<string>(this.productoXEditar.title ?? '0'),
-      price: new FormControl<string>(''),
-      description: new FormControl<string>(''),
-      category: new FormControl<string>(''),
-      image: new FormControl(''),
+      price: new FormControl<string>(this.productoXEditar.price + ""),
+      description: new FormControl<string>(this.productoXEditar.description ?? '0'),
+      category: new FormControl<string>(this.productoXEditar.category ?? '0'),
+      image: new FormControl(""),
   
     })
   }
 
 
-  openVerticallyCentered(content: TemplateRef<any>) {
+  openVerticallyCentered(content: TemplateRef<any>) {  //para abrir el modal
     this.modalService.open(content, { centered: true });
   }
 

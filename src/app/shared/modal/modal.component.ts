@@ -14,7 +14,6 @@ import { agregarProductos } from '../Store/Actions/crud.actions';
 })
 export class ModalComponent {
 
-  private modalService = inject(NgbModal);
   
   public producForm = new FormGroup({
 
@@ -27,7 +26,7 @@ export class ModalComponent {
   })
 
 
-  constructor(public store: Store, private productService: ProductService) {
+  constructor(public store: Store, private productService: ProductService, private modalService:NgbModal) {
    
   }
 

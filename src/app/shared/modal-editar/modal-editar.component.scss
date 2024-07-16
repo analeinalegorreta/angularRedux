@@ -3,7 +3,6 @@
 
   }
 
-
   .dark-modal .modal-content {
     background-color: #4472C4;
     color: white;
@@ -11,4 +10,18 @@
   }
   .dark-modal .close {
     color: white;
+  }
+
+  .icono {
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    background: none;
+    color: #4472C4;
+  }
+
+  button{
+    justify-content: center;
+    align-items: center;
+    margin-right: 1%;
   }

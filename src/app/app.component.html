@@ -1,46 +1,50 @@
-
 <app-modal></app-modal>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      @if (!productState.loading) {
+      <table datatable class="row-border hover table-sm" id="tablas" [dtOptions]="dtOptions">
+        <thead>
 
-@if (!productState.loading) {
-<table datatable class="row-border hover" id="tablas" [dtOptions]="dtOptions">
-  <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+            <th>Categoría</th>
+            <th>Imagen</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produc of productos">
+            <td>{{produc.id}}</td>
+            <td>{{produc.title}}</td>
+            <td>{{produc.price}}</td>
+            <td>{{produc.description}}</td>
+            <td>{{produc.category}}</td>
+            <td><img [src]="produc.image" alt="" class="imagenes"></td>
+            <td>
+              <app-modal-editar [productoXEditar]='produc' />
+              @if (produc.id) {
+              <button class="btn btn-light" (click)="deleteElement(produc.id)"> <i class="fa-solid fa-trash icono"></i>
 
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Precio</th>
-      <th>Descripción</th>
-      <th>Categoría</th>
-      <th>Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let produc of productos">
-      <td>{{produc.id}}</td>
-      <td>{{produc.title}}</td>
-      <td>{{produc.price}}</td>
-      <td>{{produc.description}}</td>
-      <td>{{produc.category}}</td>
-      <td>
-       <app-modal-editar [productoXEditar]='produc' />
-        @if (produc.id) {
-        <button class="btn btn-light" (click)="deleteElement(produc.id)"> <i class="fa-solid fa-trash icono"></i>
+              </button>
+              }
 
-        </button>
-        }
-
-      </td>
-    </tr>
-
-
-
-  </tbody>
-
-
-</table>
-
-}@else {
-<p>Cargando...</p>
-}
+            </td>
+          </tr>
 
 
+
+        </tbody>
+
+
+      </table>
+
+      }@else {
+      <p>Cargando...</p>
+      }
+    </div>
+  </div>
+</div>

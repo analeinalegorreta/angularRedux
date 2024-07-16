@@ -1,11 +1,16 @@
 .icono {
     justify-content: center;
     align-items: center;
-    margin: 5%;
+    margin-right: 5%;
     background: none;
     color: #4472C4;
   }
+
+  
   button{
+    justify-content: center;
+    align-items: center;
+    margin-right: 8%;
     .iconoPlus {
       display: flex;
       align-items: right;
@@ -51,15 +56,10 @@
     text-align: center; 
   }
 
-
-
-  a {
-    color: rgba(13, 110, 253, 1);
-    text-decoration: underline;
-    text-decoration-line: underline;
-    text-decoration-thickness: initial;
-    text-decoration-style: initial;
-    text-decoration-color: initial;
+.imagenes{
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
 }
 
 
