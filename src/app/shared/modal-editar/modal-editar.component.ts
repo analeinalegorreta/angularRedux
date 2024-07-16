@@ -17,15 +17,7 @@ export class ModalEditarComponent implements OnInit{
 
   private modalService = inject(NgbModal);
   
-  public producForm = new FormGroup({
-
-    title: new FormControl<string>(''),
-    price: new FormControl<string>(''),
-    description: new FormControl<string>(''),
-    category: new FormControl<string>(''),
-    image: new FormControl(''),
-
-  })
+  public producForm! : FormGroup
 
 
   constructor(public store: Store, private productService: ProductService) {
