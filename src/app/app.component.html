@@ -1,18 +1,6 @@
 
 <app-modal></app-modal>
 
-<!-- 
-<div class="container">
-  <div class="row">
-    <div class="col-12 text-end">
-      <button class="btn btn-light" (click)="openVerticallyCentered(content)"> <i
-          class="fa-solid fa-plus icono"></i></button>
-    </div>
-  </div>
-</div> -->
-
-
-
 @if (!productState.loading) {
 <table datatable class="row-border hover" id="tablas" [dtOptions]="dtOptions">
   <thead>
@@ -34,9 +22,7 @@
       <td>{{produc.description}}</td>
       <td>{{produc.category}}</td>
       <td>
-        <button class="btn btn-light m-1" (click)="editElement()"> <i class="fa-regular fa-pen-to-square icono"></i>
-
-        </button>
+       <app-modal-editar [productoXEditar]='produc' />
         @if (produc.id) {
         <button class="btn btn-light" (click)="deleteElement(produc.id)"> <i class="fa-solid fa-trash icono"></i>
 

@@ -64,14 +64,14 @@ export class ProductEffects {
 
     addProductsEffect$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(fromProductsActions.agregarProductos),
+            ofType(fromProductsActions.agregarProductos),//cual fue la accion que va a disparar la accion asincrona
             mergeMap((accion) =>
     
-                this.ProductService.addProducts(accion.producto).pipe(
+                this.ProductService.addProducts(accion.producto).pipe( //hace la accion asincrona
                     map(resp => {
-                        return fromProductsActions.obtenerProductos()
+                        return fromProductsActions.obtenerProductos() //ejecuta laccion que paso
                     }),
-                    catchError((error) => of(fromProductsActions.failAgregarProductos({ error: error })))
+                    catchError((error) => of(fromProductsActions.failAgregarProductos({ error: error })))//ejecuta la ccion que no paso
     
                 )
             )

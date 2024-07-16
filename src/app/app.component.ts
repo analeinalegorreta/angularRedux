@@ -6,11 +6,7 @@ import { agregarProductos, editarProductos, eliminarProducto, obtenerProductos }
 import { ProductState } from './shared/Store/Reducer/crud.reducer';
 import { getProductsState } from './shared/Store/Selectors/product.selector';
 import { Product } from './shared/interfaces/produc.interfaces';
-
 import { ProductService } from './shared/services/product.service';
-
-
-
 
 
 @Component({
@@ -28,14 +24,9 @@ export class AppComponent implements OnInit {
 
   public productos: Product[] = []
 
-
-
   constructor(public store: Store, private productService: ProductService) {
    
   }
-
-
-
 
 
   ngOnInit(): void {
@@ -45,7 +36,7 @@ export class AppComponent implements OnInit {
       resp => {
         this.productState = resp;
         this.productos = resp.data
-        console.log(resp);
+        console.log(resp.data.length);
 
       }
     )
@@ -55,32 +46,7 @@ export class AppComponent implements OnInit {
 
   }
 
- 
 
-  addElement() {
-   
-
-  }
-
-
-
-  editElement() {
-
-    let productoXEditar: Product = {
-      category: "Muebles",
-      id: 1,
-      description: "Silla",
-      image: "/img",
-      price: 2,
-      title: "Silla nueva blanca"
-
-
-    }
-
-    this.store.dispatch(editarProductos({ producto: productoXEditar }))
-
-
-  }
 
   deleteElement(id: number) {
 

@@ -82,14 +82,13 @@ export const productReducer = createReducer(
     
 
     on(fromProductsActions.agregarProductos, (state, action) => {
-        console.log(action.producto+"reductor");
         
         // let statee = Object.create(state);
         // statee.data.push(action.producto)
         return {
             ...state,
             data: state.data.concat(action.producto),
-            loading: true,
+            loading: false,
 
         }
     }),
