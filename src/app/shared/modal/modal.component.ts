@@ -1,5 +1,4 @@
-import { Component, inject, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -7,39 +6,5 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
-  private modalService = inject(NgbModal);
 
-	openBackDropCustomClass(content: TemplateRef<any>) {
-		this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
-	}
-
-	openWindowCustomClass(content: TemplateRef<any>) {
-		this.modalService.open(content, { windowClass: 'dark-modal' });
-	}
-
-	openSm(content: TemplateRef<any>) {
-		this.modalService.open(content, { size: 'sm' });
-	}
-
-	openLg(content: TemplateRef<any>) {
-		this.modalService.open(content, { size: 'lg' });
-	}
-
-	openXl(content: TemplateRef<any>) {
-		this.modalService.open(content, { size: 'xl' });
-	}
-
-	openFullscreen(content: TemplateRef<any>) {
-		this.modalService.open(content, { fullscreen: true });
-	}
-
-	openVerticallyCentered(content: TemplateRef<any>) {
-		this.modalService.open(content, { centered: true });
-	}
-
-
-
-	openModalDialogCustomClass(content: TemplateRef<any>) {
-		this.modalService.open(content, { modalDialogClass: 'dark-modal' });
-	}
 }

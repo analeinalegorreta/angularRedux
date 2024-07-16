@@ -11,6 +11,9 @@ import { ProductService } from './shared/services/product.service';
 
 import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ModalComponent } from './shared/modal/modal.component';
+
+
 
 
 @Component({

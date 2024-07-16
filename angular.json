@@ -38,8 +38,8 @@
             ],
             "styles": [
               "src/styles.scss",
-
-               "node_modules/datatables.net-dt/css/dataTables.dataTables.min.css"
+               "node_modules/datatables.net-dt/css/dataTables.dataTables.min.css",
+               "node_modules/datatables.net-dt/css/jquery.dataTables.css"
 
             ],
             "scripts": [
