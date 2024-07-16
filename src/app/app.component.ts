@@ -9,9 +9,6 @@ import { Product } from './shared/interfaces/produc.interfaces';
 
 import { ProductService } from './shared/services/product.service';
 
-import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ModalComponent } from './shared/modal/modal.component';
 
 
 
@@ -30,7 +27,7 @@ export class AppComponent implements OnInit {
   };
 
   public productos: Product[] = []
-  private modalService = inject(NgbModal);
+
 
 
   constructor(public store: Store, private productService: ProductService) {
@@ -38,15 +35,7 @@ export class AppComponent implements OnInit {
   }
 
 
-  public producForm = new FormGroup({
 
-    title: new FormControl<string>(''),
-    price: new FormControl<string>(''),
-    description: new FormControl<string>(''),
-    category: new FormControl<string>(''),
-    image: new FormControl(''),
-
-  })
 
 
   ngOnInit(): void {
@@ -66,9 +55,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  openVerticallyCentered(content: TemplateRef<any>) {
-    this.modalService.open(content, { centered: true });
-  }
+ 
 
   addElement() {
    
@@ -103,22 +90,6 @@ export class AppComponent implements OnInit {
 
 
 
-  onsubmit(content: TemplateRef<any>): void {
-
-
-    let producto: Product = {
-
-      title: this.producForm.get('title')!.value,
-      price: parseInt(this.producForm.get('price')!.value ?? '0'),
-      description: this.producForm.get('description')!.value,
-      category: this.producForm.get('category')!.value,
-      image: "",
-    }
-
-    // this.producForm.value;
-    this.modalService.dismissAll()
-
-  }
 
 
 
